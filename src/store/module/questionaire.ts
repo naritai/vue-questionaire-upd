@@ -35,9 +35,20 @@ const mutations = {
   DEC_IDX(state: any, payload: number) {
     state.currentQuestionIdx = payload;
   },
-  ANSWER_QUESTION(state: any, question: any) {
-    // TODO: handle back and rewrite problem
-    state.answeredQuestions = [...state.answeredQuestions, question];
+  ANSWER_QUESTION(state: any, answeredQuestion: any) {
+    const questionIdx = state.answeredQuestions.findIndex((elem: any) => {
+      return elem.id === answeredQuestion.id
+    });
+
+    if (questionIdx !== -1) {
+      state.answeredQuestions = [
+        ...state.answeredQuestions.slice(0, questionIdx), 
+        answeredQuestion,
+        ...state.answeredQuestions.slice(questionIdx + 1), 
+      ];
+    } else {
+      state.answeredQuestions = [...state.answeredQuestions, answeredQuestion];
+    }
   },
   CLEAR_ANSWERED_QUESTIONS(state: any) {
     state.answeredQuestions = [];
