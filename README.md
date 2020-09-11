@@ -1,29 +1,7 @@
-# vue-questionaire
+# vue-questionaire-app
 
-## Project setup
-```
-yarn install
-```
+## Preview image
+![Preview](https://github.com/naritai/vue-questionaire/blob/master/demo.png)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Watch demo on youtube
+[![Demo]()](https://youtu.be/REKfJAwd2Hs)
