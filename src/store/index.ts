@@ -1,11 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import questionaire from "@/store/module/questionaire.ts";
+import { createLogger } from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {},
+  getters: {},
   mutations: {},
   actions: {},
-  modules: {}
+  modules: {
+    questionaire
+  },
+  plugins: [createLogger()]
 });
+
+export default store;

@@ -1,0 +1,29 @@
+<template>
+  <div class="question">
+    <h3>{{ question }}</h3>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+
+@Component()
+export default class QuestionaireQuestion extends Vue {
+  @Prop() readonly question: string;
+}
+</script>
+
+<style lang="scss" scoped>
+.question {
+  width: 650px;
+  padding: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+h3 {
+  font-size: 3.3em;
+}
+</style>

@@ -1,17 +1,23 @@
 <template>
-  <div class="home">
-    <Question msg="test" />
+  <div class="main">
+    <Questionaire />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Question from "@/components/questionaire/Question.vue"; // @ is an alias to /src
+import Questionaire from "@/components/questionaire/"; // @ is an alias to /src
 
 @Component({
   components: {
-    Question
+    Questionaire
   }
 })
-export default class Home extends Vue {}
+export default class Main extends Vue {}
 </script>
+
+<style lang="scss">
+.main {
+  width: 100%;
+}
+</style>
