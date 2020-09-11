@@ -11,7 +11,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class BaseButton extends Vue {
   @Prop() readonly text: string;
   @Prop() readonly disabled: boolean;
-  @Prop() public onClick: (event) => void;
+  @Prop() onClick: (event) => void;
 }
 </script>
 
@@ -33,5 +33,11 @@ button {
 button:hover {
   background-color: transparent;
   border: 2px solid $main-background-color;
+}
+
+button:disabled {
+  opacity: 0.7;
+  background-color: $main-background-color;
+  cursor: default;
 }
 </style>

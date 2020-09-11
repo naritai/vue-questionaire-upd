@@ -1,15 +1,30 @@
 <template>
   <div class="report">
-    <h3>Your answers</h3>
-    <ul>
-      <li v-for="(answer, idx) in report" v-bind:key="idx">
-        {{ answer.text }} --------> {{ answer.positive ? "YES" : "NO" }}
-      </li>
-    </ul>
-    <QuestionaireButton
-      v-bind:onClick="generateJSONReport"
-      text="Generate JSON"
-    />
+    <h3>{{ `${jsonReport ? "JSON" : "Your answers" }` }}</h3>
+    <div class="not-answered" v-if="report.length === 0 && !jsonReport">
+      You not answered any question
+    </div>
+    <div class="json" v-else-if="jsonReport">
+      {{ jsonReport }}
+      <QuestionaireButton
+        class="report-btn"
+        text="Start again"
+        v-bind:onClick="clearState"
+      />
+    </div>
+    <div v-else>
+      <ul>
+        <li v-for="(answer, idx) in report" v-bind:key="idx">
+          {{ answer.text }} ----> {{ answer.positive ? "YES" : "NO" }}
+        </li>
+      </ul>
+      <QuestionaireButton
+        class="report-btn"
+        v-bind:onClick="generateJSONReport"
+        v-bind:disabled="report.length === 0"
+        text="Generate JSON"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,14 +39,23 @@ import { mapState } from "vuex";
   },
   computed: {
     ...mapState({
-      report: state => state.questionaire.answeredQuestions
+      report: state => state.questionaire.answeredQuestions,
+      jsonReport: state => state.questionaire.jsonReport
     })
   }
 })
 export default class QuestionaireReport extends Vue {
   generateJSONReport() {
     const jsonReport = JSON.stringify(this.report);
-    console.log(jsonReport);
+    this.$store.dispatch("SET_JSON_REPORT", jsonReport)
+    .then(() => {
+      this.$store.dispatch("CLEAR_ANSWERED_QUESTIONS")
+    });
+  }
+
+  clearState() {
+    this.$store.dispatch("CLEAR_STATE")
+      .then(() => this.$store.dispatch("FETCH_QUESTIONS"));
   }
 }
 </script>
@@ -41,13 +65,27 @@ export default class QuestionaireReport extends Vue {
   width: 650px;
   padding: 15px;
   padding-bottom: 10px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+
+  & .json {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.3em;
+  }
+
+  & .not-answered {
+    font-size: 1.5em;
+  }
+
+  & .report-btn {
+    margin-top: 100px;
+  }
 
   & h3 {
     font-size: 3.3em;
+    margin: 0;
   }
   & li {
     font-size: 1.5em;

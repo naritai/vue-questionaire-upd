@@ -2,13 +2,18 @@
 import MockApiService from "@/services/mock-api";
 const mockApi = new MockApiService();
 
-const state = {
+const defaultState = {
   questions: [],
   answeredQuestions: [],
   loading: false,
   error: false,
   currentQuestion: { text: "default question ?"},
-  currentQuestionIdx: 0
+  currentQuestionIdx: 0,
+  jsonReport: ""
+};
+
+const state = {
+  ...defaultState
 };
 const getters = {};
 const mutations = {
@@ -31,7 +36,23 @@ const mutations = {
     state.currentQuestionIdx = payload;
   },
   ANSWER_QUESTION(state: any, question: any) {
+    // TODO: handle back and rewrite problem
     state.answeredQuestions = [...state.answeredQuestions, question];
+  },
+  CLEAR_ANSWERED_QUESTIONS(state: any) {
+    state.answeredQuestions = [];
+  },
+  SET_JSON_REPORT(state: any, report: string) {
+    state.jsonReport = report;
+  },
+  CLEAR_STATE(state: any) {
+    state.questions = [];
+    state.answeredQuestions = [];
+    state.loading = false;
+    state.error = false;
+    state.currentQuestion = { text: "default question ?"};
+    state.currentQuestionIdx = 0;
+    state.jsonReport = "";
   }
 };
 const actions = {
@@ -62,9 +83,8 @@ const actions = {
   },
   NEXT_QUESTION: async({ commit, state }: any) => {
     const nextIdx = state.currentQuestionIdx += 1;
-    const hasQuestion = nextIdx < state.questions.length;
-    if (hasQuestion) {
-      const nextQuestion = state.questions[nextIdx];
+    const nextQuestion = state.questions[nextIdx];
+    if (nextQuestion) {
       commit("SET_CURRENT_QUESTION", nextQuestion);
       commit("INC_IDX", nextIdx);
     }
@@ -76,6 +96,15 @@ const actions = {
       commit("SET_CURRENT_QUESTION", prevQuestion);
       commit("DEC_IDX", prevIdx);
     }
+  },
+  CLEAR_ANSWERED_QUESTIONS: async({ commit }: any) => {
+    commit("CLEAR_ANSWERED_QUESTIONS");
+  },
+  SET_JSON_REPORT: async({ commit }: any, report: string) => {
+    commit("SET_JSON_REPORT", report);
+  },
+  CLEAR_STATE: async({ commit }: any) => {
+    commit("CLEAR_STATE");
   }
 };
 
