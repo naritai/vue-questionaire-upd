@@ -9,7 +9,8 @@ const defaultState = {
   error: false,
   currentQuestion: { text: "default question ?"},
   currentQuestionIdx: 0,
-  jsonReport: ""
+  jsonReport: "",
+  isShouldShowQuestion: true
 };
 
 const state = {
@@ -64,6 +65,9 @@ const mutations = {
     state.currentQuestion = { text: "default question ?"};
     state.currentQuestionIdx = 0;
     state.jsonReport = "";
+  },
+  SET_QUESTION_VISIBILITY(state: any, payload: boolean) {
+    state.isShouldShowQuestion = payload;
   }
 };
 const actions = {
@@ -116,6 +120,13 @@ const actions = {
   },
   CLEAR_STATE: async({ commit }: any) => {
     commit("CLEAR_STATE");
+  },
+  HIDE_QUESTION_FOR_MS: async({ commit }: any, ms: number) => {
+    commit("SET_QUESTION_VISIBILITY", false);
+
+    setTimeout(() => {
+      commit("SET_QUESTION_VISIBILITY", true)
+    }, ms);
   }
 };
 

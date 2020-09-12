@@ -1,5 +1,5 @@
 <template>
-  <div class="question">
+  <div class="question" :class="$mq">
     <h3>{{ question }}</h3>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component()
+@Component
 export default class QuestionaireQuestion extends Vue {
   @Prop() readonly question: string;
 }
@@ -25,5 +25,12 @@ export default class QuestionaireQuestion extends Vue {
 
 h3 {
   font-size: 3.3em;
+}
+
+.mobile {
+  width: 100%;
+  & h3 {
+    font-size: 2.6em;
+  }
 }
 </style>

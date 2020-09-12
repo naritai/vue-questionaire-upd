@@ -47,6 +47,11 @@ export default class QuestionMover extends Vue {
 <style lang="scss" scoped>
 @import "@/scss/_variables";
 
+.question-mover {
+  display: flex;
+  justify-content: center;
+}
+
 .material-icons {
   font-size: 5em;
 }

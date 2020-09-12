@@ -47,7 +47,6 @@ export default class QuestionaireBody extends Vue {
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
-  background-color: #d74e09;
   border-radius: 2px;
 }
 </style>

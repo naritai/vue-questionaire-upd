@@ -1,5 +1,7 @@
 <template>
-  <div class="question-counter">Questions {{ `${answered}/${total}` }}</div>
+  <div class="question-counter">
+    Questions {{ `${answered}/${total}` }}
+  </div>
 </template>
 
 <script lang="ts">

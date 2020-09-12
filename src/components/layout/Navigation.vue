@@ -1,5 +1,5 @@
 <template>
-  <nav class="main-navigation">
+  <nav class="main-navigation" :class="$mq">
     <router-link to="/">Questionaire</router-link>
     <router-link to="/about">About</router-link>
   </nav>
@@ -30,5 +30,14 @@ export default class Navigation extends Vue {}
       color: $link-color-active;
     }
   }
+}
+.mobile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin-bottom: 20px;
 }
 </style>

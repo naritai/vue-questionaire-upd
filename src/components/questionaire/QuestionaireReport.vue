@@ -1,5 +1,5 @@
 <template>
-  <div class="report">
+  <div class="report" :class="$mq">
     <h3>{{ `${jsonReport ? "JSON" : "Your answers" }` }}</h3>
     <div class="not-answered" v-if="report.length === 0 && !jsonReport">
       You not answered any question
@@ -90,5 +90,12 @@ export default class QuestionaireReport extends Vue {
   & li {
     font-size: 1.5em;
   }
+}
+
+.mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 </style>

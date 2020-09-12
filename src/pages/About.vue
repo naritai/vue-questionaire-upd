@@ -15,17 +15,21 @@
 <style lang="scss">
 .about {
   width: 100%;
-  height: 580px;
+  min-height: 580px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  min-height: 500px;
   background-color: #d74e09;
   border-radius: 2px;
 
+  & h1 {
+    font-size: 2.5em;
+  }
+
   & p {
-    font-size: 1.5em;
+    margin-top: 20px;
+    font-size: 1.8em;
   }
 }
 </style>

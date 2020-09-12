@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="$mq">
     <Navigation />
     <router-view />
   </div>
@@ -29,11 +29,16 @@ export default class App extends Vue {}
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 10px;
 
   font-size: 14px;
   background-color: $main-background-color;
   color: $main-text-color;
+}
+
+.mobile {
+  font-size: 10px !important;
 }
 </style>

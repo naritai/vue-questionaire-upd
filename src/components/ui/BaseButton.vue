@@ -1,5 +1,10 @@
 <template>
-  <button v-bind:disabled="disabled" @click="onClick">
+  <button
+    v-bind:disabled="disabled"
+    @click="onClick"
+    class="base-btn"
+    :class="$mq"
+  >
     {{ text }}
   </button>
 </template>
@@ -26,6 +31,7 @@ button {
   border-radius: 2px;
   cursor: pointer;
   font-size: 2em;
+  font-weight: bold;
   background-color: $main-background-color;
   color: $main-text-color;
 }
@@ -39,5 +45,10 @@ button:disabled {
   opacity: 0.7;
   background-color: $main-background-color;
   cursor: default;
+}
+
+.mobile {
+  margin-right: 0;
+  font-size: 1.6em !important;
 }
 </style>
