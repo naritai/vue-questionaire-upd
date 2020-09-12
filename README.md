@@ -1,7 +1,10 @@
 # vue-questionaire-app
 
-## Preview image
-![Preview](https://github.com/naritai/vue-questionaire/blob/master/demo.png)
+## Destop
+![Preview](https://github.com/naritai/vue-questionaire-upd/blob/master/desktop.png)
 
-## Watch demo on youtube
-[![Demo]()](https://youtu.be/REKfJAwd2Hs)
+## Mobile 1
+![Preview](https://github.com/naritai/vue-questionaire-upd/blob/master/mobile1.png)
+
+## Mobile 2
+![Preview](https://github.com/naritai/vue-questionaire-upd/blob/master/mobile2.png)
